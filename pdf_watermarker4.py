@@ -1,5 +1,7 @@
 from PyPDF2 import PdfFileWriter, PdfFileReader
-import sys, getopt
+import sys
+import getopt
+
 
 def get_scale(in_page, wm_height, wm_width):
         # Set proper scale
@@ -9,6 +11,7 @@ def get_scale(in_page, wm_height, wm_width):
         height_scale = page_height/wm_height
         # scale = min(width_scale, height_scale)
         return width_scale, height_scale, page_height, page_width
+
 
 def create_watermark(input_pdf, output, watermark):
     watermark_obj = PdfFileReader(watermark)
@@ -51,17 +54,18 @@ def create_watermark(input_pdf, output, watermark):
     with open(output, 'wb') as out:
         pdf_writer.write(out)
 
+
 def get_args(argv):
     inputfile = ''
     outputfile = ''
     try:
-        opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+        opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
-        print ('pdf_watermarker.py -i <inputfile> -o <outputfile>')
+        print('pdf_watermarker.py -i <inputfile> -o <outputfile>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print ('pdf_watermarker.py -i <inputfile> -o <outputfile>')
+            print('pdf_watermarker.py -i <inputfile> -o <outputfile>')
             sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
