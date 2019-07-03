@@ -8,8 +8,8 @@ def get_scale(in_page, wm_height, wm_width):
         page_width = in_page.mediaBox[2]
         page_height = in_page.mediaBox[3]
         width_scale = page_width/wm_width
-        height_scale = page_height/wm_height
-        # scale = min(width_scale, height_scale)
+        height_scale = page_height/wm_width
+        # height_scale = page_height/wm_height
         return width_scale, height_scale, page_height, page_width
 
 
@@ -38,7 +38,6 @@ def create_watermark(input_pdf, output, watermark):
                 x_tranlation = (float(page_w)/2) - (wm_width/2)
             else:
                 x_tranlation = 0
-
             page.mergeScaledTranslatedPage(watermark_page, min(w_scale, 1), x_tranlation, 0)
         else:
             # y_translation to center in portrait
