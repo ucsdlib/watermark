@@ -41,9 +41,9 @@ Install python3, virtualenv, and create watermark virtualenv
     su - tomcat
     cd /usr/local/etc
     virtualenv -p python3 watermark
-    pip install --upgrade pip
     cd watermark
     source bin/activate
+    pip install --upgrade pip
     pip install PyPDF2
 
 Copy into the virtualenv Dan's script and the watermark PDF
