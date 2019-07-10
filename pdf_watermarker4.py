@@ -22,7 +22,7 @@ def create_watermark(input_pdf, output, watermark):
     wm_height = watermark_page.mediaBox[3]
 
     # Read in the input file
-    pdf_reader = PdfFileReader(input_pdf)
+    pdf_reader = PdfFileReader(input_pdf, strict=False)
     pdf_writer = PdfFileWriter()
 
     # Watermark all the pages
